@@ -7,5 +7,23 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db_drill/text_files_db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="my_newdb" uuid="fe9c5bc3-84a8-4af7-a1ec-418ecd279bbd">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db_drill/my_newdb</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="my_text_files" uuid="1a7f1d68-cd3e-4e93-87c7-b84128a8999f">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db_drill/my_text_files.db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="my_file_db" uuid="9df298ad-b189-4d0b-88e0-540160534f61">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db_drill/my_file_db.db</jdbc-url>
+    </data-source>
   </component>
 </project>
