@@ -29,7 +29,7 @@ with db_connect:
         if item.endswith('.txt'):
             # add text file to db
 
-            curr.execute("INSERT INTO tbl_text_files(col_file_name) VALUES (?)", item)
+            curr.execute("INSERT INTO tbl_text_files(col_file_name) VALUES (?)", (item,))
             # print text files to terminal
             print(item)
     db_connect.commit()
