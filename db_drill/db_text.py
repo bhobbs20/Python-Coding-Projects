@@ -1,7 +1,6 @@
 import sqlite3
 
-
-db_connect = sqlite3.connect('my_newdb')
+db_connect = sqlite3.connect('my_file_db.db')
 
 with db_connect:
     curr = db_connect.cursor()
@@ -13,18 +12,26 @@ with db_connect:
 db_connect.close()
 
 
-db_connect = sqlite3.connect('my_newdb')
+# connect to db
+db_connect = sqlite3.connect('my_file_db.db')
 
+# while connected to DD
 with db_connect:
+    # create db cursor
     curr = db_connect.cursor()
 
     fileList = ('information.docx', 'Hello.txt', 'myImage.png', \
                 'myMovie.mpg', 'World.txt', 'data.pdf', 'myPhoto.jpg')
 
-    for file in fileList:
-        if file.endswith('.txt'):
+    # loop through fileList
+    for item in fileList:
+        # grab files that are txt files
+        if item.endswith('.txt'):
+            # add text file to db
 
-            print(file)
+            curr.execute("INSERT INTO tbl_text_files(col_file_name) VALUES (?)", item)
+            # print text files to terminal
+            print(item)
     db_connect.commit()
 db_connect.close()
 
