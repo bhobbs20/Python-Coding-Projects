@@ -1,23 +1,8 @@
-"""
 
-Drill Description:
- Write a script that creates a GUI with
-a button widget and a text widget.The script will also include a function
-that when it is called will invoke a dialog modal which will allow users with
-the ability to select a folder directory from their system. Finally, your
-script will show the user’s selected directory path into the text field.
-
-Requirements:
-Your script will need to use Python 3 and the Tkinter module.
-
-Your script will need to use the askdirectory() method from the Tkinter module.
-
-Your script will need to have a function linked to the button widget so that once the button has been clicked will take the user’s selected file path retained by the askdirectory() method and print it within your GUI’s text widget.
-
-"""
 
 from tkinter import *
-import browse_gui
+from tkinter import filedialog
+import tkinter as tk
 
 
 class ParentWindow(Frame):
@@ -27,12 +12,48 @@ class ParentWindow(Frame):
         self.master = master
         self.master = master
         self.master.resizable(width=False, height=False)
-        # self.master.geometry("{}x{}".format(700, 400))
         self.master.geometry()
         self.master.title("Check Files")
         self.master.config(bg="lightgrey")
 
-        browse_gui.load_gui(self)
+        # Button to fire dialog
+        self.btn_browse_1 = tk.Button(self.master, width=12, height=1, text='Browse', bg="lightgrey",
+                                      highlightbackground='lightgrey', command=self.find_directory)
+
+        self.btn_browse_1.grid(row=0, column=1, padx=(30, 0), pady=(50, 0), sticky=E)
+
+        # Show directory name here
+        self.txt_browse_file_1 = tk.Entry(self.master, text="")
+        self.txt_browse_file_1.grid(row=0, column=2, rowspan=1, columnspan=9, padx=(30, 40), pady=(50, 0),
+                                    sticky=N + E + W)
+
+        self.btn_browse_2 = tk.Button(self.master, width=12, height=1, text='Browse', bg="lightgrey",
+                                      highlightbackground='lightgrey')
+        self.btn_browse_2.grid(row=1, column=1, padx=(30, 0), pady=(5, 0), sticky=E)
+
+        self.txt_browse_file_1 = tk.Entry(self.master, text='')
+        self.txt_browse_file_1.grid(row=1, column=2, rowspan=1, columnspan=9, padx=(30, 40), pady=(5, 0),
+                                    sticky=N + E + W)
+
+        self.btn_check_files = tk.Button(self.master, width=12, height=1, text='Check Files..', bg="lightgrey",
+                                         highlightbackground='lightgrey')
+        self.btn_check_files.grid(row=3, column=1, padx=(30, 0), pady=(40, 40), sticky=E)
+
+        self.btn_cancel = tk.Button(self.master, width=12, height=1, text='Close Program', bg="lightgrey",
+                                    highlightbackground='lightgrey', command=self.cancel)
+        self.btn_cancel.grid(row=3, column=10, padx=(0, 30), pady=(40, 40))
+
+        self.var_directory_name = StringVar()
+
+    # find directory function
+    def find_directory(self):
+        self.var_directory_name = tk.filedialog.askdirectory()
+        dn = self.var_directory_name.get()
+        self.txt_browse_file_1.config(text="{}".format(dn))
+
+    # This works
+    def cancel(self):
+        self.master.destroy()
 
 
 if __name__ == "__main__":
